@@ -428,5 +428,130 @@ Nesta seção, vamos explorar implementações JavaScript de uma série de ambos
 
 Desenvolvedores normalmente se perguntam se existe um padrão *ideal* ou conjunto de padrões que eles devem usar em seu *workflow*. Não uma única reposta verdadeira para essa questão. cada script e aplicação web que trabalhamos tem suas necessidades individuais e nós precisamos pensar e sentir onde um padrão pode oferecer um valor real para uma implementação.
 
-Por exemplo, alguns projetos podem beneficiar das vantagens oferecidas pela dissociação do padrão *Observer* (que reduz quão dependente as partes da aplicação são da outra) enquanto outros podem simplesmente ser bem pequenos para uma dissociação ser algo a se preocupar.
+Por exemplo, alguns projetos podem se beneficiar das vantagens oferecidas pela dissociação do padrão *Observer* (que reduz quão dependente as partes da aplicação são uma da outra) enquanto outros podem simplesmente ser bem pequenos para uma dissociação ser algo a se preocupar.
 
+Dito isto, uma vez que temos um uma sólida compreensão de padrões de projeto e os problemas específicos que eles são melhor empregados, isto torna simples sua integração dentro de nossa arquitetura da aplicação.
+
+**Os padrões que iremos explorar nesta seção são:**
+
+* [Constructor Pattern]()
+* [Module Pattern]()
+* [Revealing Module Pattern]()
+* [Singleton Pattern]()
+* [Observer Pattern]()
+* [Mediator Pattern]()
+* [Prototype Pattern]()
+* [Command Pattern]()
+* [Facade Pattern]()
+* [Factory Pattern]()
+* [Mixin Pattern]()
+* [Decorator Pattern]()
+* [Flyweight Pattern]()
+
+# O Padrão Constructor
+
+Nas linguagens de programação clássicas orientada a objetos, um construtor é um método especial usado para inicializar um recém criado objeto que a memória fora alocada para isso. No JavaScript, como quase tudo é um objeto, nós estamos frequentemente mais interessados em construtores de objetos.
+
+Construtores de objetos são usados para criar específicos tipos de objetos - preparando o objeto tanto para uso quanto aceitando argumentos que um construtor pode usar para configurar os valores das propriedades e métodos, quando o objeto é criado pela primeira vez.
+
+## Criação de Objetos
+
+As 3 formas comuns de se criar um novo objeto no JavaScript são as seguintes:
+
+<pre>
+<code>
+// Cada uma das opções seguintes irão criar um novo objeto vazio:
+
+var newObject = {};
+
+// ou
+var newObject = Object.create( Object.prototype );
+
+// ou
+var newObject = new Object();
+</code>
+</pre>
+
+Onde o construtor "Objeto" no exemplo final cria um *objeto invólucro* para um valor específico, ou quando nenhum valor é passado, ele irá criar um objeto vazio e devolvê-lo.
+
+Há 4 maneiras em que chaves e valores pode ser atribuídas a um objeto:
+
+<pre>
+<code>
+// Abordagem compatível com ECMAScript 3
+
+// 1. Sintaxe de Ponto
+
+// Configura propriedades
+newObject.someKey = "Hello World";
+
+// Pega propriedade
+var value = newObject.someKey;
+
+
+// 2. Sintaxe de Colchete
+
+// Configura propriedade
+newObject["someKey"] = "Hello World";
+
+// Pega propriedade
+var value = newObject["someKey"];
+
+
+// Abordagens compatíveis somente com ECMAScript 5
+// Para mais informações veja: 
+// http://kangax.github.com/es5-compat-table/
+
+// 3. Object.defineProperty
+
+// Configura propriedades
+Object.defineProperty( newObject, "someKey", {
+	value: "para mais controle do comportamento das propriedades",
+	writable: true,
+	enumerable: true,
+	configurable: true
+});
+
+// Se o código acima parece um pouco difícil de ler, 
+// uma versão mais curta pode ser escrita assim:
+
+var defineProp = function ( obj, key, value ) {
+	var config = {
+		value: value,
+		writable: true,
+		enumerable: true,
+		configurable: true
+	};
+	Object.defineProperty( obj, key, config );
+};
+
+// Para usar, nós então criamos um novo objeto vazio "person"
+var person = Object.create( Object.prototype );
+
+// Populando, preenchendo o objeto com propriedades
+defineProp( person, "car", "Delorean" );
+defineProp( person, "dateOfBirth", "1981" );
+defineProp( person, "hasBeard", false );
+
+console.log(person);
+// Saída: Object {car: "Delorean", dateOfBirth: "1981", hasBeard: false}
+
+// 4. Object.defineProperties
+
+// Configura propriedades
+Object.defineProperties( newObject, {
+	"someKey": {
+		value: "Hello World",
+		writable: true
+	},
+
+	"anotherKey": {
+		value: "Foo bar",
+		writable: false
+	}
+});
+
+// Pegando as propriedades de 3. e 4. pode ser feito uso 
+// de qualquer opção em 1. e 2.
+</code>
+</pre>
