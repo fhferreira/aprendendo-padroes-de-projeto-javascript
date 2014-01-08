@@ -555,3 +555,95 @@ Object.defineProperties( newObject, {
 // de qualquer opção em 1. e 2.
 </code>
 </pre>
+
+Como vamos ver depois neste livro, estes métodos podem ser usado para herança, como o seguinte:
+
+<pre>
+<code>
+// Uso:
+
+// Cria um piloto de corrida de carro que herda do objeto person
+var driver = Object.create( person );
+
+// Configura algumas proprieadades para o piloto
+defineProp( driver, "topSpeed", "100mph" );
+
+// Pega uma propriedade heradada (1981)
+console.log( driver.dateOfBirth );
+
+// Pega a propriedade que nós configuramos (100mph)
+console.log( driver.topSpeed );
+</code>
+</pre>
+
+## Construtores Básicos
+
+Como dissemos anteriormente, JavaScript não suporta o conceito de classes mas suporta funções construtoras especiais que trabalham com objetos. Simplesmente chamando uma função construtora com o prefixo `new`, nós podemos dizer ao JavaScript que queremos que a função se comporte como um construtor e instanciamos um novo objeto com os membros definidos por esta função.
+
+Dentro do construtor, a palavra-chave `this` referencia o novo objeto que foi criado. Revisitando a criação de objeto, um básico construtor se parece com o seguinte:
+
+<pre>
+<code>
+function Car ( model, year, miles ) {
+	
+	this.model = model;
+	this.year = year;
+	this.miles = miles;
+
+	this.toString = function () {
+		return this.model + " has done " + this.miles + " miles";
+	};
+}
+
+// Uso:
+
+// Podemos criar novas instâncias do carro
+var civic = new Car( "Honda Civic", 2009, 20000 );
+var mondeo = new Car( "Ford Mondeo", 2010, 5000 );
+
+// e então abrir o console do navegador e ver que
+// a saída do método toString() irá chamar estes objetos
+console.log( civic.toString() );
+console.log( mondeo.toString() ); 
+</code>
+</pre>
+
+O código acima é uma simples versão do padrão construtor mas ele sofre com alguns problemas. Um é que ele torna a herança difícil e o outro é que as funções como `toString()` são redefinidas para cada um dos novos objetos criados usando o construtor Car. Isto não é muito otimizado como a função idealmente deve ser compartilhando entre todos os suas instâncias do tipo Car.
+
+Agradecidamente temos um número de alternativas compatǘeis com ambos ES3 e ES5 para construir objetos, é um trabalho trivial contornar esta limitação.
+
+## Construtores com Protótipos
+
+Funções em JavaScript tem uma propriedade chamada `prototype`. Quando chamamos um construtor JavaScript para criar um objeto, todas as propriedades do protótipo do construtor são feitas disponíveis para o novo objeto. Desta maneira, múltiplos objetos Car podem ser criados com acesso ao mesmo protótipo. Nós podemos então extender o exemplo original para o seguinte:
+
+<pre>
+<code>
+function Car ( model, year, miles ) {
+	
+	this.model = model;
+	this.year = year;
+	this.miles = miles;
+
+}
+
+
+// Note aqui que nós estamos usando 
+// Object.prototype.method em vez de
+// Object.prototype, de modo a evitar
+// a redefinição do objeto prototype
+Car.prototype.toString = function () {
+	return this.model + " has done " + this.miles + " miles";
+};
+
+// Uso
+var civic = new Car( "Honda Civic", 2009, 20000 );
+var mondeo = new Car( "Ford Mondeo", 2010, 5000 );
+
+console.log( civic.toString() );
+console.log( mondeo.toString() );
+</code>
+</pre>
+
+Então, um simples instância de toString() agora vai ser compartilhada entre todos os objetos Car.
+
+# O Padrão Module
