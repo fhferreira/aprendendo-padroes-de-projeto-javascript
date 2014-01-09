@@ -647,3 +647,96 @@ console.log( mondeo.toString() );
 Então, um simples instância de toString() agora vai ser compartilhada entre todos os objetos Car.
 
 # O Padrão Module
+
+## Módulos
+
+Módulos são partes integrais da arquitetura de uma aplicação robusta e tipicamente ajudam a manter unidades do código de um projeto bem separadas e organizadas.
+
+Em JavaScript, temos muitas opções para implementação de módulos. Que incluem:
+
+* O Padrão de Módulo
+* Notação literal de Objetos
+* Módulos AMD
+* Módulos CommonJS
+* Módulos *ECMAScript Harmony*
+
+Nós vamos explorar as últimos três destas opções posteriormente na seção deste livro *Padrões de Projeto Modernos de JavaScript Modular*.
+
+O Padrão de Módulo (Module Pattern) é baseado em partes pelos objetos literais então faz sentido refrescarmos um pouco nosso conhecimento sobre eles primeiramente.
+
+## Objetos Literais
+
+Na notação literal de objetos, um objeto é descrito como uma configuração separado por vírgulas, em pares nome/valor e delimitado por chaves (`{}`). Nomes dentro do objeto podem ser strings ou identificadores seguidos por dois pontos. Não deve haver vírgula após o último par nome/valor no objeto pois isto causará erros.
+
+<pre>
+<code>
+var myObjectLiteral = {
+	
+	variableKey: variableValue,
+
+	functionKey: function () {
+		// ...
+	}
+};
+</code>
+</pre>
+
+Objetos literais não necessitam ser instanciados usando o operador `new`, mas não devem ser usados iniciando a declaração com a abertura da chave `{`, pois isto pode ser interpretado como a abertura de um bloco. Fora do objeto, novos membros podem ser adicionados a ele usando atribuições como a seguinte: `myModule.property = "someValue;"`
+
+Abaixo nós podemos ver um exemplo mais complexo de um módulo definido por meio da notação literal de objetos.
+
+<pre>
+<code>
+var myModule = {
+	
+	myProperty: "someValue",
+
+	// objetos literais podem conter propriedades e métodos
+	// por exemplo: podemos definir um objeto adicional para o módulo de configuração:
+	myCOnfig: {
+		useCaching: true,
+		language: "en"
+	},
+
+	// um método bem básico
+	saySomething: function () {
+		console.log( "Where in the world is Paul Irish today?" );
+	},
+
+	// retornando um valor baseado na configuração atual
+	reportMyConfig: function () {
+		console.log( "Caching is: " + ( this.myConfig.useCaching ? "enabled" : "disabled" ) );
+	},
+
+	// sobrescrevendo a configuração atual
+	updateMyConfig: function ( newConfig ) {
+
+		if ( typeof newConfig === "object" ) {
+			this.myConfig = newConfig;
+			console.log( this.myConfig.language );
+		}
+	}
+};
+
+// Saída: Where in the world is Paul Irish today?
+myModule.saySomething();
+
+// Saída: Caching is: enabled
+myModule.reportMyConfig();
+
+// Saída: fr
+myModule.updateMyConfig({
+	language: "fr",
+	useCaching: false
+});
+
+// Saída: Caching is: disabled
+myModule.reporMyConfig();
+</code>
+</pre>
+
+Usando objetos literais podemos auxiliar no encapsulamento e organização de nosso código e Rebecca Murphey anteriormente escreveu sobre este tópico em [profundidade](http://rmurphey.com/blog/2009/10/15/using-objects-to-organize-your-code/), então você deve dar uma olhada em mais informações sobre objetos literais.
+
+Se optarmos pos esta técnica, nós vamos estar igualmente interessados no padrão de Módulos. Ele continua usando objetos literais mas somente como o valor de retorno de uma função do escopo.
+
+## O padrão de Módulo
