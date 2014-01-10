@@ -740,3 +740,53 @@ Usando objetos literais podemos auxiliar no encapsulamento e organização de no
 Se optarmos pos esta técnica, nós vamos estar igualmente interessados no padrão de Módulos. Ele continua usando objetos literais mas somente como o valor de retorno de uma função do escopo.
 
 ## O padrão de Módulo
+
+O Padrão de módulo foi originalmente definido como uma forma de fornecer encapsulamento para ambas classes privadas e públicas, em convenção de engenheiros de software.
+
+No JavaScript, o Padrão Modular é usado para emular ainda mais o conceito de classes de uma maneira que nós somos capazes de incluir ambos métodos e variáves, públicos e privados, dentro de um único objeto, protegendo assim partes específicas do escopo global. O que resulta na redução da probabilidade de nossos nomes de funções conflitarem com outras funções definidas em scripts adicionais na página.
+
+### Privacidade
+
+O Padrão Modular encapsula "privacidade", estado e organização usando closures. Isso fornece uma forma de envolver uma mistura de métodos e variáveis públicas e privadas, protegendo partes de vazamentos dentro do escopo global e acidentalmente colidindo com outra interface de um desenvolvedor. Com este padrão, somente uma API pública é retornada, mantendo tudo mais dentro do closure privado.
+
+Isto nos dá uma solução limpa para encapsular a lógica fazendo o trabalho pesado somente expondo a interface que desejamos que outras partes de nossa aplicação utilizem. O padrão é muito similar a uma expressão funcional imediatamente invocada (Immediately-Invoked Functional Expression | [IIFE](http://benalman.com/news/2010/11/immediately-invoked-function-expression/), veja a seção de padrões namespacing para mais informações) exceto que um objeto é retornado ao invés de uma função.
+
+Deve ser notado que não há realmente um verdadeiro e explícito senso de "privacidade" dentro do JavaScript porque diferente de outras linguagens tradicionais, ele não tem modificadores de acesso. Variáveis não podem tecnicamente ser declaradas públicas ou privadas então nós usamos o escopo da função para simular este conceito. Com o padrão modular, variáveis e métodos declarados só estão disponíveis dentro do próprio módulo, graças as closures.
+
+### História
+
+A partir de uma perspectiva histórica, o Padrão Modular foi originalmente desenvolvido por um número de pessoas incluindo [Richard Cornford](https://groups.google.com/forum/#!msg/comp.lang.javascript/eTzWVa1W_pE/N9lnvRG9WJ8J) em 2003. Foram popularizadas posteriormente por Douglas Crockford em suas palestras. Outra parte curiosa é que se você já usou a biblioteca YUI da Yahoo, algumas destas propriedades podem parecer bem familiares e a razão disto é que o Padrão Modular foi uma forte influência para YUI quando fora criado seus componentes.
+
+### Exemplos
+
+Vamos conversar a olhar sobre uma implementação de Padrão Modular criando um módulo que é auto-contido.
+
+<pre>
+<code>
+var testModule = (function () {
+	
+	var counter = 0;
+
+	return {
+		incrementCounter: function () {
+			return counter++;
+		},
+
+		resetCounter: function () {
+			console.log( "counter value prior to reset: " + counter);
+			counter = 0;
+		}
+	};
+
+})();
+
+// Uso:
+
+// Incrementando nosso contador
+testModule.incrementCounter();
+
+// Checando o valor do contador e resetando
+// Saída: 1
+testModule.resetCounter();
+</code>
+</pre>  
