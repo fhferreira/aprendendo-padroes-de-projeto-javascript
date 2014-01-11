@@ -25,7 +25,7 @@ Neste livro nós vamos explorar a aplicação de ambos padrões de projeto, clá
 
 
 
-# Público Alvo
+## Público Alvo
 
 Este livro é destinado aos desenvolvedores profissionais que desejam melhorar seus conhecimentos sobre padrões de projeto e como eles podem ser aplicados na linguagem de programação JavaScript.
 
@@ -35,7 +35,7 @@ Se você deseja aprender como escrever um código bonito, estruturado e organiza
 
 
 
-# Agradecimentos
+## Agradecimentos
 
 Eu sempre vou ser grato pela talentosa revisão técnica que ajudou a melhorar este livro, incluindo a comunidade em geral. O conhecimento e entusiasmo que eles trouxeram foi simplesmente fantástico. Os tweets e blogs oficias dos revisores técnicos foram fontes regulares tanto para ideias como inspiração e eu recomendo de coração que vocês os chequem.
 
@@ -52,7 +52,7 @@ Finalmente, eu gostaria de agradecer minha maravilhosa esposa Ellie, por todo o 
 
 
 
-# Créditos
+## Créditos
 
 Embora alguns dos padrões abordados no livro foram implementados baseados na experiência pessoal, muitos deles podem ser previamente identificados na comunidade JavaScript. Este trabalho é fruto da experiência combinada de inúmeros desenvolvedores. Similar a abordagem lógica de prevenir interrupções do texto com créditos (em Padrões Javascript), eu listei créditos e leituras recomendadas para todo conteúdo abordado, na seção de referências.
 
@@ -60,7 +60,7 @@ Se algum artigo ou link estiver faltando na lista de referências, por favor ace
 
 
 
-# Leitura
+## Leitura
 
 Por este livro ser destinado a desenvolvedores iniciantes e intermediários, um entendimento básico dos fundamentos JavaScript é assumido. Caso você queira saber mais sobre a linguagem, fico feliz de recomendar os seguintes títulos:
 
@@ -74,14 +74,14 @@ Por este livro ser destinado a desenvolvedores iniciantes e intermediários, um 
 
 # Tabela de Conteúdo
 
-* <a href="#01">↡</a> Introdução
-* [O que é Padrão?](https://github.com/eoop/aprendendo-padroes-de-projeto-javascript#o-que-%C3%A9-um-padr%C3%A3o)
-* [Teste de Padronicidade, Proto-padrões e A Regra dos Três](https://github.com/eoop/aprendendo-padroes-de-projeto-javascript#teste-de-padronicidade-proto-padr%C3%B5es-e-a-regra-dos-tr%C3%AAs)
-* [A Estrutura de um Padrão de Projeto](https://github.com/eoop/aprendendo-padroes-de-projeto-javascript#a-estrutura-de-um-padr%C3%A3o-de-projeto)
-* [Escrevendo Padrões de Projeto](https://github.com/eoop/aprendendo-padroes-de-projeto-javascript#escrevendo-padr%C3%B5es-de-projeto)
-* [Anti-Padrões](https://github.com/eoop/aprendendo-padroes-de-projeto-javascript#anti-padr%C3%B5es)
-* [Categorias de Padrão de Projeto](https://github.com/eoop/aprendendo-padroes-de-projeto-javascript#categorias-de-padr%C3%A3o-de-projeto)
-* [Tabela-Resumo de Categorias de Padrão de Projeto](https://github.com/eoop/aprendendo-padroes-de-projeto-javascript#categoriza%C3%A7%C3%A3o-de-padr%C3%B5es-de-projeto)
+* [Introdução]()
+* [O que é Padrão?]()
+* [Teste de Padronicidade, Proto-padrões e A Regra dos Três]()
+* [A Estrutura de um Padrão de Projeto]()
+* [Escrevendo Padrões de Projeto]()
+* [Anti-Padrões]()
+* [Categorias de Padrão de Projeto]()
+* [Tabela-Resumo de Categorias de Padrão de Projeto]()
 * [Padrões de Projeto JavaScript]()
 	* [Constructor Pattern (Padrão "Construtor")]()
 	* [Revealing Module Pattern (Padrão "de Módulo")]()
@@ -120,7 +120,7 @@ Por este livro ser destinado a desenvolvedores iniciantes e intermediários, um 
 
 
 
-<h1 id="01">◈ <span>Introdução</span></h1>
+# Introdução
 
 Um dos mais importantes aspectos de escrever código manutenível é se tornar capaz de notar partes recorrentes neste código e otimizá-los. Esta é uma área onde o conhecimento de padrões de projeto pode ser inestimável.
 
@@ -165,7 +165,7 @@ Padrões não são exatamente uma solução. É importante que lembremos que a f
 
 * **Padrões usados frequentemente podem ser melhorados com o tempo, através das experiências de outros desenvolvedores que usam e contribuem com a comunidade de padrões de projeto.** Em alguns casos isto leva a criação de padrões inteiramente novos, embora em outros, tenhamos uma melhoria das diretrizes de quão específico e como o padrão pode ser melhor usado. Isto pode garantir que a base da solução do padrão continue sendo mais robusta que uma solução "ad-hoc" pode ser. (ad-hoc = é uma expressão latina cuja tradução literal é "para isto" ou "para esta finalidade")
 
-### Nós já Usamos Padrões todos os dias
+## Nós já Usamos Padrões todos os dias
 
 Para entender o quão útil os padrões podem ser, vamos revisar um simples problema de seleção de elementos que a biblioteca jQuery resolve para nós.
 
@@ -275,7 +275,7 @@ As perguntas seguintes são minhas sugestões se você tiver interesse em criar 
 
 Escrever um padrão é um cuidadoso balanço entre a criação de um projeto que é geral, específico e sobre tudo, útil. Tente assegurar-se de quando for escrever um padrão você cubra aamplamente as possíveis áreas e você se sairá bem. Eu espero que esta breve introdução de como escrever padrões tenha dado a você alguns *insights* que vão ajudá-lo no processo de aprendizado para as próximas seções deste livro.
 
-# Anti-padrões
+# Anti-Padrões
 
 Se nós considerarmos que um padrão representa uma boa prática, um anti-padrão representa uma lição que foi aprendida. O termo anti-padrão foi cunhado em 1995 por Andrew Koenig no *November C++ Report* daquele ano, inspirado pelo livro GoF's *Design Patterns*. No artigo do Koenig, temos duas notações de anti-padrões representadas. Anti-padrões:
 
@@ -304,7 +304,7 @@ Conhecer os anti-padrões é crítico para o sucesso. Uma vez que estivermos apt
 
 Um glossário do livro conhecido de projetos, *Domain-Driven Terms*, afirma com razão que:
 
-> "Um padrão de projeto nomeia, abstra e identifica os aspectos de uma comum estrutura de projeto que faz isto útil para criação e reutilização de projetos orientados a objeto. O padrão de projeto identifica as classes participantes e suas instâncias, suas funções e colaborações, e a distribuição de responsabilidades.
+> Um padrão de projeto nomeia, abstra e identifica os aspectos de uma comum estrutura de projeto que faz isto útil para criação e reutilização de projetos orientados a objeto. O padrão de projeto identifica as classes participantes e suas instâncias, suas funções e colaborações, e a distribuição de responsabilidades.
 
 > Cada padrão de projeto foca em um problema ou questão particular de projetos orientados a objetos. Ele descreve quando se aplica, ou não pode ser aplicado em vista de outras restrições de projeto, e as consequências e os compromissos de se usá-lo. Desde que nós eventualmente implementemos nossos padrões, um padrão de projeto também fornece código de exemplo para ilustrar uma implementação.
 
@@ -312,19 +312,19 @@ Um glossário do livro conhecido de projetos, *Domain-Driven Terms*, afirma com 
 
 Padrões de projeto pode ser divididos em um número de diferentes categorias. Nesta seção vamos revisar 3 destas categorias e mencionar brevemente alguns exemplos de padrões que caem nestas categorias antes de explorar especificamente alguns com maiores detalhes.
 
-### Padrões de projetos Criacionais
+## Padrões de projetos Criacionais
 
 Padrões de projetos Criacionais focam em lidar com os mecanismos de criação de objetos onde os objetos são criados de maneira adequada para a situação que estamos trabalhando. A abordagem básica para criação de objeto pode legar a adicionar complexidade ao projeto, enquanto esses padrões têm como objetivo resolver problemas através do controle do processo de criação.
 
 Alguns padrões que se encaixam nesta categoria são: Constructor, Factory, Abstract, Prototype, Singleton e Builder.
 
-### Padrões de Projetos Estruturais
+## Padrões de Projetos Estruturais
 
 Padrões de projetos estruturais estão preocupados com composição de objetos e, normalmente, identificar maneiras simples de realizar as relações entre diferentes objetos. Eles ajudam a assegurar que quando uma parte do sistema muda, toda a estrutura do sistema não precisa fazer o mesmo. Eles também auxiliam na reformulação de partes do sistema que não encaixam em uma proposta particular dentro do que eles fazem.
 
 Padrões que entram nesta categoria: Decorator, Facade, Flyweight, Adapter e Proxy.
 
-### Padrões de projetos Comportamentais
+## Padrões de projetos Comportamentais
 
 Padrões de projetos comportamentais focam em melhorar ou simplificar a comunicação entre os objetos díspares em um sistema.
 
@@ -336,7 +336,7 @@ Em minhas primeiras experiências de aprendizado sobre padrões de projeto, eu e
 
 Eu recomendo usar esta tabela como referência, mas lembre-se que existem padrões adicionais que não foram mencionados aqui mas vão ser discutidos depois no livro.
 
-### Uma breve nota sobre as classes
+## Uma breve nota sobre as classes
 
 Tenha em mente que haverá padrões nesta tabela que fazem referência ao conceito de "classes". JavaScript é uma linguagem sem classes, entretanto classes podem ser simuladas usando funções.
 
@@ -445,13 +445,13 @@ Dito isto, uma vez que temos um uma sólida compreensão de padrões de projeto 
 * [Decorator Pattern]()
 * [Flyweight Pattern]()
 
-# O Padrão Constructor
+## O Padrão Construtor
 
 Nas linguagens de programação clássicas orientada a objetos, um construtor é um método especial usado para inicializar um recém criado objeto que a memória fora alocada para isso. No JavaScript, como quase tudo é um objeto, nós estamos frequentemente mais interessados em construtores de objetos.
 
 Construtores de objetos são usados para criar específicos tipos de objetos - preparando o objeto tanto para uso quanto aceitando argumentos que um construtor pode usar para configurar os valores das propriedades e métodos, quando o objeto é criado pela primeira vez.
 
-## Criação de Objetos
+### Criação de Objetos
 
 As 3 formas comuns de se criar um novo objeto no JavaScript são as seguintes:
 
@@ -569,7 +569,7 @@ console.log( driver.dateOfBirth );
 console.log( driver.topSpeed );
 ```
 
-## Construtores Básicos
+### Construtores Básicos
 
 Como dissemos anteriormente, JavaScript não suporta o conceito de classes mas suporta funções construtoras especiais que trabalham com objetos. Simplesmente chamando uma função construtora com o prefixo `new`, nós podemos dizer ao JavaScript que queremos que a função se comporte como um construtor e instanciamos um novo objeto com os membros definidos por esta função.
 
@@ -603,7 +603,7 @@ O código acima é uma simples versão do padrão construtor mas ele sofre com a
 
 Agradecidamente temos um número de alternativas compatǘeis com ambos ES3 e ES5 para construir objetos, é um trabalho trivial contornar esta limitação.
 
-## Construtores com Protótipos
+### Construtores com Protótipos
 
 Funções em JavaScript tem uma propriedade chamada `prototype`. Quando chamamos um construtor JavaScript para criar um objeto, todas as propriedades do protótipo do construtor são feitas disponíveis para o novo objeto. Desta maneira, múltiplos objetos Car podem ser criados com acesso ao mesmo protótipo. Nós podemos então extender o exemplo original para o seguinte:
 
@@ -635,9 +635,9 @@ console.log( mondeo.toString() );
 
 Então, um simples instância de toString() agora vai ser compartilhada entre todos os objetos Car.
 
-# O Padrão Module
+## O Padrão Module
 
-## Módulos
+### Módulos
 
 Módulos são partes integrais da arquitetura de uma aplicação robusta e tipicamente ajudam a manter unidades do código de um projeto bem separadas e organizadas.
 
@@ -724,7 +724,7 @@ Usando objetos literais podemos auxiliar no encapsulamento e organização de no
 
 Se optarmos pos esta técnica, nós vamos estar igualmente interessados no padrão de Módulos. Ele continua usando objetos literais mas somente como o valor de retorno de uma função do escopo.
 
-## O padrão de Módulo
+### O padrão de Módulo
 
 O Padrão de módulo foi originalmente definido como uma forma de fornecer encapsulamento para ambas classes privadas e públicas, em convenção de engenheiros de software.
 
@@ -772,4 +772,41 @@ testModule.incrementCounter();
 // Checando o valor do contador e resetando
 // Saída: 1
 testModule.resetCounter();
+```
+
+Aqui, outras partes do código são incapazes de ler diretamente o valor de `incrementCounter()` ou `resetCounter()`. A variável counter é totalmente blindada do nosso escopo global então isto atua como uma variável privada - sua existência é limitada dentro do módulo do closure, então os únicos códigos apto a acessar este escopo são as duas funções. Nossos métodos são efetivamente colocados no namespace, então na seção de teste do nosso código devemos prefixar toda chamada com o nome do módulo (e.g. "`testModule`").
+
+Quando trabalhamos com o Padrão Modular, é útil definir um modelo simples que usaremos para começar. Aqui temos um que cobre *namespacing*, variáveis públicas e privadas:
+
+```javascript
+
+var myNamespace = (function () {
+	
+	var myPrivateVar, myPrivateMethod;
+
+	// Uma variável privada contadora
+	myPrivateVar = 0;
+
+	// Uma função privada que registra qualquer argumento
+	myPrivateMethod = function ( foo ) {
+		console.log( foo );	
+	};
+
+	return {
+
+		// Uma variável pública
+		myPublicVar: "foo",
+
+		// Uma função pública utilizando privadas
+		myPublicFunction: function ( bar ) {
+
+			// Incrementa nosso contador privado
+			myPrivateVar++;
+
+			// Chama nosso método privado usando bar
+			myPrivateMethod( bar );
+		}
+	};
+})();
+
 ``` 
