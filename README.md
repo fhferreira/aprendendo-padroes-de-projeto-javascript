@@ -342,7 +342,7 @@ Tenha em mente que haverá padrões nesta tabela que fazem referência ao concei
 
 A abordagem mais comum para conseguir isto é definindo uma função JavaScript onde nós então criamos um objeto usando a palavra-chave `new`. `this` pode ser usado para ajudar a definir novas propriedades e métodos para o objeto como no exemplo seguinte:
 
-```
+```javascript
 // Uma "classe" carro
 function Car ( model ) {
 	
@@ -358,7 +358,7 @@ function Car ( model ) {
 
 Nós podemos então instanciar o objeto usando o construtor Car que definimos acima:
 
-```
+```javascript
 var myCar = new Car("ford");
 
 myCar.year = "2010";
@@ -455,7 +455,7 @@ Construtores de objetos são usados para criar específicos tipos de objetos - p
 
 As 3 formas comuns de se criar um novo objeto no JavaScript são as seguintes:
 
-```
+```javascript
 
 // Cada uma das opções seguintes irão criar um novo objeto vazio:
 
@@ -473,7 +473,7 @@ Onde o construtor "Objeto" no exemplo final cria um *objeto invólucro* para um 
 
 Há 4 maneiras em que chaves e valores pode ser atribuídas a um objeto:
 
-```
+```javascript
 // Abordagem compatível com ECMAScript 3
 
 // 1. Sintaxe de Ponto
@@ -553,7 +553,7 @@ Object.defineProperties( newObject, {
 
 Como vamos ver depois neste livro, estes métodos podem ser usado para herança, como o seguinte:
 
-```
+```javascript
 // Uso:
 
 // Cria um piloto de corrida de carro que herda do objeto person
@@ -575,7 +575,7 @@ Como dissemos anteriormente, JavaScript não suporta o conceito de classes mas s
 
 Dentro do construtor, a palavra-chave `this` referencia o novo objeto que foi criado. Revisitando a criação de objeto, um básico construtor se parece com o seguinte:
 
-```
+```javascript
 function Car ( model, year, miles ) {
 	
 	this.model = model;
@@ -607,7 +607,7 @@ Agradecidamente temos um número de alternativas compatǘeis com ambos ES3 e ES5
 
 Funções em JavaScript tem uma propriedade chamada `prototype`. Quando chamamos um construtor JavaScript para criar um objeto, todas as propriedades do protótipo do construtor são feitas disponíveis para o novo objeto. Desta maneira, múltiplos objetos Car podem ser criados com acesso ao mesmo protótipo. Nós podemos então extender o exemplo original para o seguinte:
 
-```
+```javascript
 function Car ( model, year, miles ) {
 	
 	this.model = model;
@@ -657,7 +657,7 @@ O Padrão de Módulo (Module Pattern) é baseado em partes pelos objetos literai
 
 Na notação literal de objetos, um objeto é descrito como uma configuração separado por vírgulas, em pares nome/valor e delimitado por chaves (`{}`). Nomes dentro do objeto podem ser strings ou identificadores seguidos por dois pontos. Não deve haver vírgula após o último par nome/valor no objeto pois isto causará erros.
 
-```
+```javascript
 var myObjectLiteral = {
 	
 	variableKey: variableValue,
@@ -672,7 +672,7 @@ Objetos literais não necessitam ser instanciados usando o operador `new`, mas n
 
 Abaixo nós podemos ver um exemplo mais complexo de um módulo definido por meio da notação literal de objetos.
 
-```
+```javascript
 var myModule = {
 	
 	myProperty: "someValue",
@@ -746,7 +746,7 @@ A partir de uma perspectiva histórica, o Padrão Modular foi originalmente dese
 
 Vamos conversar a olhar sobre uma implementação de Padrão Modular criando um módulo que é auto-contido.
 
-```
+```javascript
 var testModule = (function () {
 	
 	var counter = 0;
