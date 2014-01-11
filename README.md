@@ -21,7 +21,7 @@ Uma razão para isso é que eles nos ajudam a construir sobre a experiência com
 
 Padrões de projeto também nos fornece um vocabulário comum para descrever soluções. Isso pode ser muito mais simples que descrever sintaxe e semântica quando estivermos tentando transmitir uma maneira de estruturar uma solução em forma de código para outras pessoas.
 
-Neste livro nós vamos explorar a aplicação de ambos padrões de pojeto, clássico e moderno, para programação JavaScript.
+Neste livro nós vamos explorar a aplicação de ambos padrões de projeto, clássico e moderno, para programação JavaScript.
 
 
 
@@ -342,8 +342,7 @@ Tenha em mente que haverá padrões nesta tabela que fazem referência ao concei
 
 A abordagem mais comum para conseguir isto é definindo uma função JavaScript onde nós então criamos um objeto usando a palavra-chave `new`. `this` pode ser usado para ajudar a definir novas propriedades e métodos para o objeto como no exemplo seguinte:
 
-<pre>
-<code>
+```
 // Uma "classe" carro
 function Car ( model ) {
 	
@@ -355,20 +354,18 @@ function Car ( model ) {
 		return this.model + " " + this.year;
 	};
 }	
-</code>
-</pre>
+```
 
 Nós podemos então instanciar o objeto usando o construtor Car que definimos acima:
 
-<pre>
-<code>
+```
 var myCar = new Car("ford");
 
 myCar.year = "2010";
 
 console.log( myCar.getInfo() );
-</code>
-</pre>
+
+```
 
 Para mais formas de definir "classes" usando JavaScript, veja [este](http://www.phpied.com/3-ways-to-define-a-javascript-class/) útil post de Stoyan Stefanov.
 
@@ -458,8 +455,8 @@ Construtores de objetos são usados para criar específicos tipos de objetos - p
 
 As 3 formas comuns de se criar um novo objeto no JavaScript são as seguintes:
 
-<pre>
-<code>
+```
+
 // Cada uma das opções seguintes irão criar um novo objeto vazio:
 
 var newObject = {};
@@ -469,15 +466,14 @@ var newObject = Object.create( Object.prototype );
 
 // ou
 var newObject = new Object();
-</code>
-</pre>
+
+```
 
 Onde o construtor "Objeto" no exemplo final cria um *objeto invólucro* para um valor específico, ou quando nenhum valor é passado, ele irá criar um objeto vazio e devolvê-lo.
 
 Há 4 maneiras em que chaves e valores pode ser atribuídas a um objeto:
 
-<pre>
-<code>
+```
 // Abordagem compatível com ECMAScript 3
 
 // 1. Sintaxe de Ponto
@@ -553,13 +549,11 @@ Object.defineProperties( newObject, {
 
 // Pegando as propriedades de 3. e 4. pode ser feito uso 
 // de qualquer opção em 1. e 2.
-</code>
-</pre>
+```
 
 Como vamos ver depois neste livro, estes métodos podem ser usado para herança, como o seguinte:
 
-<pre>
-<code>
+```
 // Uso:
 
 // Cria um piloto de corrida de carro que herda do objeto person
@@ -573,8 +567,7 @@ console.log( driver.dateOfBirth );
 
 // Pega a propriedade que nós configuramos (100mph)
 console.log( driver.topSpeed );
-</code>
-</pre>
+```
 
 ## Construtores Básicos
 
@@ -582,8 +575,7 @@ Como dissemos anteriormente, JavaScript não suporta o conceito de classes mas s
 
 Dentro do construtor, a palavra-chave `this` referencia o novo objeto que foi criado. Revisitando a criação de objeto, um básico construtor se parece com o seguinte:
 
-<pre>
-<code>
+```
 function Car ( model, year, miles ) {
 	
 	this.model = model;
@@ -605,8 +597,7 @@ var mondeo = new Car( "Ford Mondeo", 2010, 5000 );
 // a saída do método toString() irá chamar estes objetos
 console.log( civic.toString() );
 console.log( mondeo.toString() ); 
-</code>
-</pre>
+```
 
 O código acima é uma simples versão do padrão construtor mas ele sofre com alguns problemas. Um é que ele torna a herança difícil e o outro é que as funções como `toString()` são redefinidas para cada um dos novos objetos criados usando o construtor Car. Isto não é muito otimizado como a função idealmente deve ser compartilhando entre todos os suas instâncias do tipo Car.
 
@@ -616,8 +607,7 @@ Agradecidamente temos um número de alternativas compatǘeis com ambos ES3 e ES5
 
 Funções em JavaScript tem uma propriedade chamada `prototype`. Quando chamamos um construtor JavaScript para criar um objeto, todas as propriedades do protótipo do construtor são feitas disponíveis para o novo objeto. Desta maneira, múltiplos objetos Car podem ser criados com acesso ao mesmo protótipo. Nós podemos então extender o exemplo original para o seguinte:
 
-<pre>
-<code>
+```
 function Car ( model, year, miles ) {
 	
 	this.model = model;
@@ -641,8 +631,7 @@ var mondeo = new Car( "Ford Mondeo", 2010, 5000 );
 
 console.log( civic.toString() );
 console.log( mondeo.toString() );
-</code>
-</pre>
+```
 
 Então, um simples instância de toString() agora vai ser compartilhada entre todos os objetos Car.
 
@@ -668,8 +657,7 @@ O Padrão de Módulo (Module Pattern) é baseado em partes pelos objetos literai
 
 Na notação literal de objetos, um objeto é descrito como uma configuração separado por vírgulas, em pares nome/valor e delimitado por chaves (`{}`). Nomes dentro do objeto podem ser strings ou identificadores seguidos por dois pontos. Não deve haver vírgula após o último par nome/valor no objeto pois isto causará erros.
 
-<pre>
-<code>
+```
 var myObjectLiteral = {
 	
 	variableKey: variableValue,
@@ -678,22 +666,20 @@ var myObjectLiteral = {
 		// ...
 	}
 };
-</code>
-</pre>
+```
 
 Objetos literais não necessitam ser instanciados usando o operador `new`, mas não devem ser usados iniciando a declaração com a abertura da chave `{`, pois isto pode ser interpretado como a abertura de um bloco. Fora do objeto, novos membros podem ser adicionados a ele usando atribuições como a seguinte: `myModule.property = "someValue;"`
 
 Abaixo nós podemos ver um exemplo mais complexo de um módulo definido por meio da notação literal de objetos.
 
-<pre>
-<code>
+```
 var myModule = {
 	
 	myProperty: "someValue",
 
 	// objetos literais podem conter propriedades e métodos
 	// por exemplo: podemos definir um objeto adicional para o módulo de configuração:
-	myCOnfig: {
+	myConfig: {
 		useCaching: true,
 		language: "en"
 	},
@@ -732,8 +718,7 @@ myModule.updateMyConfig({
 
 // Saída: Caching is: disabled
 myModule.reporMyConfig();
-</code>
-</pre>
+```
 
 Usando objetos literais podemos auxiliar no encapsulamento e organização de nosso código e Rebecca Murphey anteriormente escreveu sobre este tópico em [profundidade](http://rmurphey.com/blog/2009/10/15/using-objects-to-organize-your-code/), então você deve dar uma olhada em mais informações sobre objetos literais.
 
@@ -761,8 +746,7 @@ A partir de uma perspectiva histórica, o Padrão Modular foi originalmente dese
 
 Vamos conversar a olhar sobre uma implementação de Padrão Modular criando um módulo que é auto-contido.
 
-<pre>
-<code>
+```
 var testModule = (function () {
 	
 	var counter = 0;
@@ -788,5 +772,4 @@ testModule.incrementCounter();
 // Checando o valor do contador e resetando
 // Saída: 1
 testModule.resetCounter();
-</code>
-</pre>  
+``` 
