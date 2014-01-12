@@ -809,4 +809,55 @@ var myNamespace = (function () {
 	};
 })();
 
-``` 
+```
+
+Olhando este outro exemplo, abaixo podemos ver uma cesta de compras implementada usando este padrão. O módulo é completamente auto-contido em uma variável global chamada `basketModule`. O array `basket` no módulo é mantido privado então outras partes da nossa aplicação são incapazes de o ler diretamente. Ele só existe com o closure do módulo e os únicos métodos aptos a acessá-lo são aqueles com acesso a este escopo (ie. `addItem()`, `getItemCount()`, etc).
+
+```javascript
+
+var basketModule = (function () {
+	
+	// privates
+
+	var basket = [];
+
+	function doSomethingPrivate () {
+		// ...
+	}
+
+	function doSomethingElsePrivate () {
+		// ...
+	}
+
+	// Retornando um objeto exposto ao público
+	return {
+
+		// Adiciona items ao nosso carrinho
+		addItem: function ( values ) {
+			basket.push( values );
+		},
+
+		// Pega o número de itens na cesta
+		getItemCount: function () {
+			return basket.length;
+		},
+
+		// Apelido público para uma função privada
+		doSomething: doSomethingPrivate,
+
+		// Pega o valor total dos itens na cesta
+		getTotal: function () {
+			var q = this.getItemCount(),
+				p = 0;
+
+			while ( q-- ) {
+				p += basket[q].price;
+			}
+
+			return p;
+		}
+	};
+})();
+
+```
+
