@@ -201,7 +201,7 @@ Estudando padrões de projeto, não é incomum depararmos com o termo "proto-pad
 
 Alternativamente, o(s) indivíduo(s) que compartilham o padrão podem não ter tempo ou interesse em ingressar no processo de "padronização" e soltam uma pequena descrição de seu proto-padrão ao invés disso. Breves descrições ou fragmentos deste padrão são conhecidos como 'patlets'.
 
-O trabalho envolvido em uma documentação completad para qualificação de um padrão pode ser muito assustador. Olhando para alguns dos mais recentes trabalhos no campo dos padrões de projeto, um padrão pode ser considerado "bom" se seguir as seguintes condições:
+O trabalho envolvido em uma documentação completa para qualificação de um padrão pode ser muito assustador. Olhando para alguns dos mais recentes trabalhos no campo dos padrões de projeto, um padrão pode ser considerado "bom" se seguir as seguintes condições:
 
 **Resolva um problema em particular:** Padrões não devem apenas capturar princípios ou estratégias. Eles precisam de capturar soluções. Este é um dos mais essenciais ingredientes para um bom padrão.
 **A solução para esse padrão não deve ser óbvia:** Podemos achar que as técnicas de resolução de problemas frequentemente tentam derivar os mesmos para uma solução baseada em um conhecimento inicial. Os melhores padrões de projeto usualmente fornecem soluções para os problemas indiretamente - isto é considerado uma abordagem necessária para os maiores problemas relacionados aos padrões.
@@ -249,7 +249,7 @@ Embora este livro destina-se aos novos padrões de projeto, um entendimento bás
 
 Escrever bons padrões é uma tarefa desafiadora. Padrões não precisam somente de (idealmente) fornecer uma quantia substancial de referências para os usuários finais, eles também precisam ser capazes de defender porque são necessários.
 
-Tendo lido a seção anterior sobre o quê um padrão é, nós podemos pensar que isso por si só é o suficiente para nos ajudar a identificar os padrões que vemos no dia a dia. Isso não é completamente verdade. Não está sempre claro se um pedaçõ de código que estamos olhando está seguindo um padrão ou acidentalmente se parece com o que ele faz.
+Tendo lido a seção anterior sobre o quê um padrão é, nós podemos pensar que isso por si só é o suficiente para nos ajudar a identificar os padrões que vemos no dia a dia. Isso não é completamente verdade. Não está sempre claro se um pedaço de código que estamos olhando está seguindo um padrão ou acidentalmente se parece com o que ele faz.
 
 Quando nós olhamos para um corpo de códgo nós pensamos que podemos usar um padrão, nós precisamos considerar escrever do início alguns dos aspectos do código que acreditamos falhar em uma particularidade existente do padrão ou conjunto de padrões.
 
